@@ -11,14 +11,12 @@ import 'package:roll_my_dice/constants/strings.dart';
 import 'package:roll_my_dice/models/appUser.dart';
 import 'package:pedantic/pedantic.dart';
 
-
 final appUserDetailsStreamProvider = StreamProvider.autoDispose<AppUser>((ref) {
   final database = ref.watch(databaseProvider);
   return database?.appUserStream() ?? const Stream.empty();
 });
 
 class AccountPage extends ConsumerWidget {
-
   Future<void> _signOut(BuildContext context, FirebaseAuth firebaseAuth) async {
     try {
       await firebaseAuth.signOut();
@@ -34,18 +32,17 @@ class AccountPage extends ConsumerWidget {
   Future<void> _confirmSignOut(
       BuildContext context, FirebaseAuth firebaseAuth) async {
     final bool didRequestSignOut = await showAlertDialog(
-      context: context,
-      title: Strings.logout,
-      content: Strings.logoutAreYouSure,
-      cancelActionText: Strings.cancel,
-      defaultActionText: Strings.logout,
-    ) ??
+          context: context,
+          title: Strings.logout,
+          content: Strings.logoutAreYouSure,
+          cancelActionText: Strings.cancel,
+          defaultActionText: Strings.logout,
+        ) ??
         false;
     if (didRequestSignOut == true) {
       await _signOut(context, firebaseAuth);
     }
   }
-
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -67,7 +64,8 @@ class AccountPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildAccountPage(BuildContext context, AppUser appUser, FirebaseAuth firebaseAuth){
+  Widget _buildAccountPage(
+      BuildContext context, AppUser appUser, FirebaseAuth firebaseAuth) {
     return Scaffold(
       body: ListView(
         scrollDirection: Axis.vertical,
@@ -77,23 +75,32 @@ class AccountPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox( height: 50,),
+              SizedBox(
+                height: 50,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(Icons.account_circle, size: 100, color: Colors.grey,)
+                  Icon(
+                    Icons.account_circle,
+                    size: 100,
+                    color: Colors.grey,
+                  )
                 ],
               ),
-              SizedBox( height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only( left: 16, bottom: 24, right: 16),
-                      padding: EdgeInsets.only( top: 16, bottom: 16, right: 16, left: 16),
+                      margin: EdgeInsets.only(left: 16, bottom: 24, right: 16),
+                      padding: EdgeInsets.only(
+                          top: 16, bottom: 16, right: 16, left: 16),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: new BorderRadius.circular(5.0),
@@ -114,12 +121,22 @@ class AccountPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("Name:",
-                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                              Text(
+                                "Name:",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              SizedBox( width: 20,),
-                              Text(appUser.name,
-                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.normal),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                appUser.name,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal),
                               ),
                             ],
                           ),
@@ -127,62 +144,73 @@ class AccountPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(appUser.phoneNumber != null ? "Phone" : "Email",
-                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                              Text(
+                                appUser.phoneNumber != null ? "Phone" : "Email",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              SizedBox( width: 20,),
-                              Text(appUser.phoneNumber != null ? appUser.phoneNumber : appUser.email,
-                                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 18),
+                              SizedBox(
+                                width: 20,
                               ),
-
+                              Text(
+                                appUser.phoneNumber != null
+                                    ? appUser.phoneNumber
+                                    : appUser.email,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 18),
+                              ),
                             ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("App Version:",
-                                style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox( width: 20,),
-                              Text("2.0.0.1",
-                                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 18),
-                              ),
-
-                            ],
-                          )
                         ],
                       ),
                     ),
                   )
                 ],
               ),
-              SizedBox( height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 height: 0.5,
                 color: Colors.grey,
               ),
               Material(
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UserDetailsPage( appUser: appUser,)),
+                      MaterialPageRoute(
+                          builder: (context) => UserDetailsPage(
+                                appUser: appUser,
+                              )),
                     );
                   },
                   child: Container(
-                    padding: EdgeInsets.only( left: 16, right: 16, top: 12, bottom: 12),
+                    padding: EdgeInsets.only(
+                        left: 16, right: 16, top: 12, bottom: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox( width: 12,),
+                        SizedBox(
+                          width: 12,
+                        ),
                         Expanded(
-                          child: Text(Strings.editUserDetails,
-                            style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal),
+                          child: Text(
+                            Strings.editUserDetails,
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal),
                           ),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: Colors.grey,),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey,
+                        ),
                       ],
                     ),
                   ),
@@ -192,15 +220,22 @@ class AccountPage extends ConsumerWidget {
                 child: InkWell(
                   onTap: () => _confirmSignOut(context, firebaseAuth),
                   child: Container(
-                    padding: EdgeInsets.only( left: 16, right: 24, top: 12, bottom: 12),
+                    padding: EdgeInsets.only(
+                        left: 16, right: 24, top: 12, bottom: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox( width: 12,),
+                        SizedBox(
+                          width: 12,
+                        ),
                         Expanded(
-                          child: Text(Strings.logout.toUpperCase(),
-                            style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal),
+                          child: Text(
+                            Strings.logout.toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal),
                           ),
                         ),
                       ],
@@ -208,12 +243,10 @@ class AccountPage extends ConsumerWidget {
                   ),
                 ),
               ),
-
             ],
           )
         ],
       ),
     );
   }
-
 }

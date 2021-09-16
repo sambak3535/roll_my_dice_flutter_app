@@ -140,7 +140,7 @@ class _SignInState extends State<SignIn> {
                 viewModel.verifyPhoneNumber(context, "+91" + number.text);
               }
             },
-            color: Colors.purple,
+            color: Colors.blue,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -176,14 +176,14 @@ class _SignInState extends State<SignIn> {
             ),
           ),
         ),
-        SizedBox( height: 30,),
-        RichText(
-            text: TextSpan(children: [
-              TextSpan(text: "I have read and agree to "),
-              TextSpan(text: "Terms and Conditions ", style: TextStyle(color: Colors.blue.shade900, decoration: TextDecoration.underline,)),
-              TextSpan(text: "and "),
-              TextSpan(text: "Privacy Policy", style: TextStyle(color: Colors.blue.shade900, decoration: TextDecoration.underline,)),
-            ], style: TextStyle(fontSize: 12, color: Colors.black))),
+        // SizedBox( height: 30,),
+        // RichText(
+        //     text: TextSpan(children: [
+        //       TextSpan(text: "I have read and agree to "),
+        //       TextSpan(text: "Terms and Conditions ", style: TextStyle(color: Colors.blue.shade900, decoration: TextDecoration.underline,)),
+        //       TextSpan(text: "and "),
+        //       TextSpan(text: "Privacy Policy", style: TextStyle(color: Colors.blue.shade900, decoration: TextDecoration.underline,)),
+        //     ], style: TextStyle(fontSize: 12, color: Colors.black))),
       ],
     );
   }
@@ -242,7 +242,7 @@ class _SignInState extends State<SignIn> {
                 viewModel.verifyOtp(otp.text);
               }
             },
-            color: Colors.purple,
+            color: Colors.blue,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),

@@ -216,7 +216,7 @@ class RollDicePage extends ConsumerWidget {
                             _updateMaximumValues(context, appUser, int.parse(maximumScore.text), int.parse(maximumAttempts.text));
                           }
                         },
-                        color: Colors.purple,
+                        color: Colors.blue,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -252,7 +252,7 @@ class RollDicePage extends ConsumerWidget {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox( height: 30,),
-                      Text((appUser.maximumAttempts - appUser.numberOfAttempts).toString() + " Attempt(s) remained.",
+                      Text((appUser.maximumAttempts - appUser.numberOfAttempts).toString() + " Attempts remained.",
                         style: TextStyle( fontSize: 25, color: Colors.black),
                       ),
                     ],
@@ -291,7 +291,7 @@ class RollDicePage extends ConsumerWidget {
                       _setScoreToLeaderBoard(context, LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
                     }
                   },
-                  color: Colors.purple,
+                  color: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -307,7 +307,7 @@ class RollDicePage extends ConsumerWidget {
                   onPressed: (){
                     _resetAllValues(context, appUser);
                   },
-                  color: Colors.purple,
+                  color: Colors.blue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),

@@ -97,7 +97,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
               children: [
                 RaisedButton(
                     onPressed: () => _submit(),
-                    color: Colors.purple,
+                    color: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
